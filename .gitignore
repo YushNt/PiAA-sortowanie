@@ -4,3 +4,5 @@ build/
 x64/
 *.obj
 *.exe
+build/
+.vscode/
