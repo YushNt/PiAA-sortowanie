@@ -1,0 +1,10 @@
+^C:\USERS\KORNE\DESKTOP\PIAASORTOWANIE\BUILD\CMAKEFILES\73FE098E18C6A7546272689E0DEA249D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/korne/Desktop/PiAASortowanie -BC:/Users/korne/Desktop/PiAASortowanie/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/korne/Desktop/PiAASortowanie/build/sorting_algorithms.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,4 @@
+C:/Users/korne/Desktop/PiAASortowanie/build/CMakeFiles/test_sorting_algorithms.dir
+C:/Users/korne/Desktop/PiAASortowanie/build/CMakeFiles/efficiency_tests.dir
+C:/Users/korne/Desktop/PiAASortowanie/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/korne/Desktop/PiAASortowanie/build/CMakeFiles/ZERO_CHECK.dir
