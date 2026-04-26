@@ -19,7 +19,7 @@ class Heap
 template <typename T>
 void Heap<T>::removeMax()
 {
-    // TODO: zaimplementuj - zachowanie podobne jak w funkcji std::pop_heap - czyli aktualny korzeń ląduje w miejscu ostatniego liścia kopca
+    
 }
 
 template <typename T>
@@ -32,8 +32,8 @@ std::size_t Heap<T>::size()
 template <typename T>
 bool Heap<T>::empty()
 {
-    // TODO: zaimplementuj
-    return false;
+    if (size() != 0) return false;
+    return true;
 }
 
 template <typename T>
