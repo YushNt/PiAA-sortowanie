@@ -1,6 +1,7 @@
 #ifndef SORTING_ALGORITHMS_MERGESORT_H
 #define SORTING_ALGORITHMS_MERGESORT_H
 #include <vector>
+#include <algorithm>
 
 // sortowanie przez scalanie
 

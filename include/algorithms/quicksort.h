@@ -1,6 +1,7 @@
 #ifndef SORTING_ALGORITHMS_QUICKSORT_H
 #define SORTING_ALGORITHMS_QUICKSORT_H
 #include <vector>
+#include <algorithm>
 
 // quicksort
 
