@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <string>
 #include "algorithms/insertsort.h"
 #include "algorithms/heapsort.h"
 #include "algorithms/mergesort.h"
@@ -10,15 +11,18 @@
 #include "algorithms/introsort.h"
 #include "algorithms/create_array.h"
 
-const int num_of_measurements = 1;
+
+const int num_of_measurements = 100;
 size_t arr_sizes[5] = {10000, 50000, 100000, 500000, 1000000};
 double percentiles[6] = {0.25, 0.5, 0.75, 0.95, 0.99, 0.997};
+std::string files_path = "C:/Users/korne/Desktop/PiAASortowanie/Pomiary/";
+
 
 int main(int argc, char* argv[])
 {   
     std::fstream plik;
     // ===== MERGE SORT ===== 
-    plik.open( "C:/Users/korne/Desktop/PiAASortowanie/Pomiary/MergeSort.csv", std::ios::trunc | std::ios::out );
+    plik.open( files_path + "MergeSort.csv", std::ios::trunc | std::ios::out );
     std::cout << "===== Rozpoczeto pomiary dla MergeSort =====" << std::endl;
     plik << "Rozmiar; Random; 25%; 50%; 75%; 95%; 99%; 99,7%; odwrotnie\n";
 
@@ -31,7 +35,7 @@ int main(int argc, char* argv[])
             auto start = std::chrono::high_resolution_clock::now();
             MergeSort<int>().sort(arr.begin(), arr.end());
             auto end = std::chrono::high_resolution_clock::now();
-            pomiary[0][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+            pomiary[0][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
         }
         std::cout << "Sorted " << std::endl;
         
@@ -44,7 +48,7 @@ int main(int argc, char* argv[])
                 auto start = std::chrono::high_resolution_clock::now();
                 MergeSort<int>().sort(arr.begin(), arr.end());
                 auto end = std::chrono::high_resolution_clock::now();
-                pomiary[p+1][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+                pomiary[p+1][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
             }
             std::cout << "Sorted with " << percentiles[p] * 100 << "% sorted:" << std::endl;
         }
@@ -56,7 +60,7 @@ int main(int argc, char* argv[])
             auto start = std::chrono::high_resolution_clock::now();
             MergeSort<int>().sort(arr.begin(), arr.end());
             auto end = std::chrono::high_resolution_clock::now();
-            pomiary[7][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+            pomiary[7][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
         }
         std::cout << "Sorted with reverse order" << std::endl;
 
@@ -72,7 +76,7 @@ int main(int argc, char* argv[])
     plik.close();
     
     // ===== QUICK SORT =====
-    plik.open( "C:/Users/korne/Desktop/PiAASortowanie/Pomiary/QuickSort.csv", std::ios::trunc | std::ios::out );
+    plik.open( files_path + "QuickSort.csv", std::ios::trunc | std::ios::out );
     std::cout << "===== Rozpoczeto pomiary dla QuickSort =====" << std::endl;
     plik << "Rozmiar; Random; 25%; 50%; 75%; 95%; 99%; 99,7%; odwrotnie\n";
     for (int s = 0; s < 5; s++){
@@ -84,7 +88,7 @@ int main(int argc, char* argv[])
             auto start = std::chrono::high_resolution_clock::now();
             QuickSort<int>().sort(arr.begin(), arr.end());
             auto end = std::chrono::high_resolution_clock::now();
-            pomiary[0][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+            pomiary[0][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
         }
         std::cout << "Sorted " << std::endl;
         
@@ -97,7 +101,7 @@ int main(int argc, char* argv[])
                 auto start = std::chrono::high_resolution_clock::now();
                 QuickSort<int>().sort(arr.begin(), arr.end());
                 auto end = std::chrono::high_resolution_clock::now();
-                pomiary[p+1][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+                pomiary[p+1][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
             }
             std::cout << "Sorted with " << percentiles[p] * 100 << "% sorted:" << std::endl;
         }
@@ -109,7 +113,7 @@ int main(int argc, char* argv[])
             auto start = std::chrono::high_resolution_clock::now();
             QuickSort<int>().sort(arr.begin(), arr.end());
             auto end = std::chrono::high_resolution_clock::now();
-            pomiary[7][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+            pomiary[7][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
         }
         std::cout << "Sorted with reverse order" << std::endl;
 
@@ -125,7 +129,7 @@ int main(int argc, char* argv[])
     plik.close();
 
     // ===== INTRO SORT =====
-    plik.open( "C:/Users/korne/Desktop/PiAASortowanie/Pomiary/IntroSort.csv", std::ios::trunc | std::ios::out );
+    plik.open( files_path + "IntroSort.csv", std::ios::trunc | std::ios::out );
     std::cout << "===== Rozpoczeto pomiary dla IntroSort =====" << std::endl;
     plik << "Rozmiar; Random; 25%; 50%; 75%; 95%; 99%; 99,7%; odwrotnie\n";
     for (int s = 0; s < 5; s++){
@@ -137,7 +141,7 @@ int main(int argc, char* argv[])
             auto start = std::chrono::high_resolution_clock::now();
             IntroSort<int>().sort(arr.begin(), arr.end());
             auto end = std::chrono::high_resolution_clock::now();
-            pomiary[0][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+            pomiary[0][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
         }
         std::cout << "Sorted " << std::endl;
         
@@ -150,7 +154,7 @@ int main(int argc, char* argv[])
                 auto start = std::chrono::high_resolution_clock::now();
                 IntroSort<int>().sort(arr.begin(), arr.end());
                 auto end = std::chrono::high_resolution_clock::now();
-                pomiary[p+1][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+                pomiary[p+1][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
             }
             std::cout << "Sorted with " << percentiles[p] * 100 << "% sorted:" << std::endl;
         }
@@ -162,7 +166,7 @@ int main(int argc, char* argv[])
             auto start = std::chrono::high_resolution_clock::now();
             IntroSort<int>().sort(arr.begin(), arr.end());
             auto end = std::chrono::high_resolution_clock::now();
-            pomiary[7][w] = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+            pomiary[7][w] = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
         }
         std::cout << "Sorted with reverse order" << std::endl;
 
