@@ -19,9 +19,9 @@ public:
     };
 private:
     typename std::vector<T>::iterator partition(typename std::vector<T>::iterator start, typename std::vector<T>::iterator end){
+        //optymalizacja pivota - mediana z początku, środka i końca 
         auto mid = start + (end - start) / 2;
         auto last = end - 1;
-        //optymalizacja pivota - mediana z początku, środka i końca
         if (*mid < *start) std::iter_swap(mid, start);
         if (*last < *start) std::iter_swap(last, start);
         if (*last < *mid) std::iter_swap(last, mid);

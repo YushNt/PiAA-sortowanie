@@ -5,7 +5,7 @@ template <typename T>
 std::vector<T> createArray(size_t size){
     static std::random_device rd; //losowe ziarno
     static std::mt19937 gen(rd()); //inicjalizacja silnika losowym ziarnem
-    std::uniform_int_distribution<T> dis(0, size*2);    //zakres wartości w tablicy
+    std::uniform_int_distribution<T> dis(0, static_cast<int>(size) * 2);    //zakres wartości w tablicy
 
     std::vector<T> array;
     array.reserve(size); //rezerwacja miejsca na tablice 
